@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raspberry Pi Fault Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    h1 { color: #333; }
+    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    table { width: 100%; border-collapse: collapse; margin-top: 10px;}
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #007bff; color: white; }
+  </style>
+</head>
+<body>
+  <h1>⚡ Raspberry Pi Fault Dashboard</h1>
+  <div class="card">
+    <h2>Event Logs</h2>
+    <table>
+      <tr><th>Node ID</th><th>Event</th><th>Reason</th><th>Timestamp</th></tr>
+      <tbody id="log"></tbody>
+    </table>
+  </div>
+
+<script>
+  async function refresh() {
+    let res = await fetch("/api/data");
+    let data = await res.json();
+    document.getElementById("log").innerHTML = "";
+    data.forEach(e => {
+      let row = `<tr>
+        <td>${e.node_id}</td><td>${e.event}</td>
+        <td>${e.reason}</td><td>${e.timestamp}</td>
+      </tr>`;
+      document.getElementById("log").innerHTML += row;
+    });
+  }
+  setInterval(refresh, 3000);
+</script>
+</body>
+</html>
