@@ -1,40 +1,42 @@
-SIH 2025 – Developing a cost effective solution for detecting the breakage of Low Voltage AC Distribution Over Head conductors
-**
-Problem Statement**
+**SIH 2025 – Developing a cost effective solution for detecting the breakage of Low Voltage AC Distribution Over Head conductors**
+==========================================================================================================================================
 
+**Problem Statement**
+------------------------------------------------------------------------------------------------------------------------------------------
 Overhead low-voltage AC distribution conductors are prone to breakage due to storms, aging infrastructure, or accidental impact. This results in:
 
-Power outages affecting large areas
+-Power outages affecting large areas
 
-Electrocution hazards from live conductors falling to the ground
+-Electrocution hazards from live conductors falling to the ground
 
-Delays in maintenance due to late fault reporting
+-Delays in maintenance due to late fault reporting
 
-Proposed Solution
+**Proposed Solution**
 
 We propose a cost-effective IoT and AI-based system with pole-mounted nodes to detect conductor faults in real-time. The system uses:
 
-Vibration, current, and temperature sensors
+-Vibration, current, and temperature sensors
 
-Raspberry Pi for edge processing and relay-based isolation
+-Raspberry Pi for edge processing and relay-based isolation
 
-MQTT protocol for fault reporting to a central dashboard
+-MQTT protocol for fault reporting to a central dashboard
 
-Key Features
+**Key Features**
+------------------------------------------------------------------------------------------------------------------------------------------
 
-Fault Detection: Identifies abnormal vibrations, sudden current drops, or overheating.
+**Fault Detection:** Identifies abnormal vibrations, sudden current drops, or overheating.
 
-Isolation: Disconnects the load (lamp/LED in POC) via a relay when a fault is detected.
+**Isolation:** Disconnects the load (lamp/LED in POC) via a relay when a fault is detected.
 
-Alerting: Publishes structured JSON events to an MQTT broker for monitoring.
+**Alerting:** Publishes structured JSON events to an MQTT broker for monitoring.
 
-Verification: Faults can be cross-checked with neighboring nodes or user crowd-sourced reports.
+**Verification:** Faults can be cross-checked with neighboring nodes or user crowd-sourced reports.
 
-Proof of Concept (POC)
-
+**Proof of Concept (POC)**
+------------------------------------------------------------------------------------------------------------------------------------------
 Since deployment hardware is unavailable, the POC uses Raspberry Pi with simulated sensor values.
 
-Node (Python script):
+**Node (Python script):**
 
 Generates simulated vibration, current, and temperature readings
 
@@ -44,7 +46,7 @@ Controls relay (turns OFF lamp/LED when fault occurs)
 
 Publishes event JSON messages to MQTT broker (broker.hivemq.com)
 
-Dashboard (Python subscriber):
+**Dashboard (Python subscriber):**
 
 Subscribes to MQTT topic (SIH2025/faults)
 
@@ -78,7 +80,8 @@ DS18B20 digital temperature sensor (temperature monitoring)
 
 Waterproof casing for field deployment
 
-Testing Scenarios
+**Testing Scenarios**
+------------------------------------------------------------------------------------------------------------------------------------------
 
 Normal condition (wind swing): No alert
 
@@ -88,7 +91,8 @@ Open circuit (low current): Fault alert
 
 Overheating (temperature rise): Fault alert
 
-Team Roles (6 Members)
+**Team Roles (6 Members)**
+------------------------------------------------------------------------------------------------------------------------------------------
 
 K.V. Rohith Sai & Mokshagna – Hardware setup and wiring (Raspberry Pi + relay)
 
@@ -100,7 +104,8 @@ Rohan – Backend/Dashboard (subscriber, data visualization, Grafana integration
 
 Sujay – Mobile app & presentation (crowd reporting and demo preparation)
 
-How to Run the POC
+**How to Run the POC**
+------------------------------------------------------------------------------------------------------------------------------------------
 
 On Raspberry Pi (Node):
 
@@ -120,7 +125,7 @@ Node: RPI-Node-1 | Event: Snap Detected | Reason: Vibration Spike | Time: 2025-0
 
 Impact
 
-The proposed system reduces:
+**The proposed system reduces:**
 
 Risk of electrocution accidents
 
