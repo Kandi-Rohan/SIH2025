@@ -1,125 +1,130 @@
- SIH 2025 – Developing a cost effective solution for detecting the breakage of Low Voltage AC Distribution Over Head conductors
- 
-🔎 Problem Statement
+SIH 2025 – Cost-Effective Solution for Detecting Breakage of Low Voltage AC Distribution Overhead Conductors
+Problem Statement
 
-Overhead low-voltage AC distribution conductors often break due to storms, aging, or accidents, leading to:
+Overhead low-voltage AC distribution conductors are prone to breakage due to storms, aging infrastructure, or accidental impact. This results in:
 
--> Power outages
+Power outages affecting large areas
 
--> Electrocution hazards from live wires on the ground
+Electrocution hazards from live conductors falling to the ground
 
--> Delays in maintenance because faults are reported late
+Delays in maintenance due to late fault reporting
 
+Proposed Solution
 
-💡 Proposed Solution
+We propose a cost-effective IoT and AI-based system with pole-mounted nodes to detect conductor faults in real-time. The system uses:
 
-We propose a cost-effective IoT + AI system with pole-mounted nodes that detect conductor faults using:
+Vibration, current, and temperature sensors
 
--> Vibration, current, and temperature sensors
+Raspberry Pi for edge processing and relay-based isolation
 
--> Raspberry Pi for processing + relay control
+MQTT protocol for fault reporting to a central dashboard
 
--> MQTT-based fault reporting
+Key Features
 
-When a fault is detected:
+Fault Detection: Identifies abnormal vibrations, sudden current drops, or overheating.
 
--> The node isolates the load (lamp/fan) using a relay
+Isolation: Disconnects the load (lamp/LED in POC) via a relay when a fault is detected.
 
--> Publishes a real-time fault alert to a central dashboard
+Alerting: Publishes structured JSON events to an MQTT broker for monitoring.
 
-Faults can be verified by peer nodes or crowd-sourced reports for higher reliability
+Verification: Faults can be cross-checked with neighboring nodes or user crowd-sourced reports.
 
+Proof of Concept (POC)
 
-🎯 Proof of Concept (POC)
-
-Since final deployment hardware is unavailable, the POC uses Raspberry Pi with simulated sensor values.
+Since deployment hardware is unavailable, the POC uses Raspberry Pi with simulated sensor values.
 
 Node (Python script):
 
--> Simulates vibration, current, and temperature readings
+Generates simulated vibration, current, and temperature readings
 
--> Detects faults based on thresholds
+Detects faults using predefined thresholds
 
--> Controls relay (turns OFF lamp if fault occurs)
+Controls relay (turns OFF lamp/LED when fault occurs)
 
--> Publishes event JSON to MQTT broker (broker.hivemq.com)
+Publishes event JSON messages to MQTT broker (broker.hivemq.com)
 
-Dashboard (Subscriber script):
+Dashboard (Python subscriber):
 
--> Subscribes to MQTT topic (SIH2025/faults)
+Subscribes to MQTT topic (SIH2025/faults)
 
--> Displays live fault events
+Displays real-time fault events with node ID, reason, and timestamp
 
-Demo Flow:
+Demo Flow
 
--> Lamp ON initially
+Lamp/LED is ON initially
 
--> Simulated fault triggers → Lamp OFF
+Simulated fault (snap/overheat/open circuit) → Relay OFF → Lamp/LED switches OFF
 
-Dashboard shows fault reason + timestamp
+Dashboard displays fault details with timestamp
 
+Hardware (POC Setup)
 
-🛠 Hardware (POC Setup)
+Raspberry Pi (any model with Wi-Fi + GPIO)
 
--> Raspberry Pi (any model with Wi-Fi + GPIO)
+Relay module for switching demo lamp/LED bulb
 
--> Relay module (to control demo lamp/LED bulb)
+Lamp/LED bulb as the test load
 
--> Lamp/LED bulb as demo load
+Breadboard and jumper wires
 
--> Breadboard + jumper wires
+Future deployment will replace simulated values with actual sensor modules:
 
-(Real deployment will use ADXL345 accelerometer, ACS712 current sensor, DS18B20 temperature sensor, and waterproof casing.)
+ADXL345 accelerometer (vibration monitoring)
 
+ACS712 current sensor (current monitoring)
 
-🧪 Testing Scenarios
+DS18B20 digital temperature sensor (temperature monitoring)
 
--> Wind swing → No alert
+Waterproof casing for field deployment
 
--> Simulated snap (vibration spike) → Lamp OFF + alert
+Testing Scenarios
 
--> Open circuit (low current) → Fault alert
+Normal condition (wind swing): No alert
 
--> Overheat simulation (high temp) → Fault alert
+Conductor snap (vibration spike): Relay OFF + fault alert
 
+Open circuit (low current): Fault alert
 
-🧑‍🤝‍🧑 Team Roles (6 Members)
+Overheating (temperature rise): Fault alert
 
-2 – K.V.ROhith Sai & Mokshagna [Hardware & wiring (Raspberry Pi + relay)]
+Team Roles (6 Members)
 
-1 – Abhijna [Firmware (sensor logic + MQTT on Raspberry Pi)]
+K.V. Rohith Sai & Mokshagna – Hardware setup and wiring (Raspberry Pi + relay)
 
-1 – Ritesh [ML (TinyML model, future extension)]
+Abhijna – Firmware development (sensor simulation + MQTT client)
 
-1 – Rohan [Dashboard/backend (subscriber, Grafana integration)]
+Ritesh – Machine Learning module (TinyML for predictive fault detection, future extension)
 
-1 – Sujay [App & presentation (crowd reporting + demo prep)]
+Rohan – Backend/Dashboard (subscriber, data visualization, Grafana integration)
 
+Sujay – Mobile app & presentation (crowd reporting and demo preparation)
 
-▶️ How to Run POC
-1. On Raspberry Pi (Node)
+How to Run the POC
+
+On Raspberry Pi (Node):
+
 python3 node.py
 
 
-Publishes simulated events every 3 seconds.
+→ Publishes simulated sensor events every 3 seconds
 
-2. On Laptop/Raspberry Pi (Subscriber/Dashboard)
+On Laptop/Raspberry Pi (Dashboard):
+
 python3 dashboard.py
 
 
-Shows live alerts:
+→ Displays fault alerts in real time, e.g.:
 
 Node: RPI-Node-1 | Event: Snap Detected | Reason: Vibration Spike | Time: 2025-09-29T22:15:00
 
+Impact
 
-🌍 Impact
+The proposed system reduces:
 
-This system reduces:
+Risk of electrocution accidents
 
--> Electrocution accidents
+Fault detection time (minutes instead of hours)
 
--> Fault detection time (minutes vs hours)
+Maintenance and repair costs for utilities
 
--> Maintenance costs for utilities
-
-Scalable nationwide via LoRaWAN / 4G / cloud dashboard.
+It is scalable nationwide using LoRaWAN, 4G, or cloud-based dashboards.
