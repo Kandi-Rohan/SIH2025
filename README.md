@@ -83,13 +83,13 @@ Since deployment hardware is unavailable, the POC uses Raspberry Pi with simulat
 **Testing Scenarios**
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-Normal condition (wind swing): No alert
+- Normal condition (wind swing): No alert
 
-Conductor snap (vibration spike): Relay OFF + fault alert
+- Conductor snap (vibration spike): Relay OFF + fault alert
 
-Open circuit (low current): Fault alert
+- Open circuit (low current): Fault alert
 
-Overheating (temperature rise): Fault alert
+- Overheating (temperature rise): Fault alert
 
 **Team Roles (6 Members)**
 ------------------------------------------------------------------------------------------------------------------------------------------
