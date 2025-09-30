@@ -1,4 +1,5 @@
-SIH 2025 – Cost-Effective Solution for Detecting Breakage of Low Voltage AC Distribution Overhead Conductors
+SIH 2025 – Developing a cost effective solution for detecting the breakage of Low Voltage AC Distribution Over Head conductors
+
 Problem Statement
 
 Overhead low-voltage AC distribution conductors are prone to breakage due to storms, aging infrastructure, or accidental impact. This results in:
