@@ -1,4 +1,5 @@
  SIH 2025 – Developing a cost effective solution for detecting the breakage of Low Voltage AC Distribution Over Head conductors
+ 
 🔎 Problem Statement
 
 Overhead low-voltage AC distribution conductors often break due to storms, aging, or accidents, leading to:
@@ -8,6 +9,7 @@ Power outages
 Electrocution hazards from live wires on the ground
 
 Delays in maintenance because faults are reported late
+
 
 💡 Proposed Solution
 
@@ -26,6 +28,7 @@ The node isolates the load (lamp/fan) using a relay
 Publishes a real-time fault alert to a central dashboard
 
 Faults can be verified by peer nodes or crowd-sourced reports for higher reliability
+
 
 🎯 Proof of Concept (POC)
 
@@ -55,6 +58,7 @@ Simulated fault triggers → Lamp OFF
 
 Dashboard shows fault reason + timestamp
 
+
 🛠 Hardware (POC Setup)
 
 Raspberry Pi (any model with Wi-Fi + GPIO)
@@ -67,6 +71,7 @@ Breadboard + jumper wires
 
 (Real deployment will use ADXL345 accelerometer, ACS712 current sensor, DS18B20 temperature sensor, and waterproof casing.)
 
+
 🧪 Testing Scenarios
 
 -> Wind swing → No alert
@@ -76,6 +81,7 @@ Breadboard + jumper wires
 -> Open circuit (low current) → Fault alert
 
 -> Overheat simulation (high temp) → Fault alert
+
 
 🧑‍🤝‍🧑 Team Roles (6 Members)
 
@@ -88,6 +94,7 @@ Breadboard + jumper wires
 1 – Rohan [Dashboard/backend (subscriber, Grafana integration)]
 
 1 – Sujay [App & presentation (crowd reporting + demo prep)]
+
 
 ▶️ How to Run POC
 1. On Raspberry Pi (Node)
