@@ -38,47 +38,47 @@ Since deployment hardware is unavailable, the POC uses Raspberry Pi with simulat
 
 **Node (Python script):**
 
-Generates simulated vibration, current, and temperature readings
+-Generates simulated vibration, current, and temperature readings
 
-Detects faults using predefined thresholds
+-Detects faults using predefined thresholds
 
-Controls relay (turns OFF lamp/LED when fault occurs)
+-Controls relay (turns OFF lamp/LED when fault occurs)
 
-Publishes event JSON messages to MQTT broker (broker.hivemq.com)
+-Publishes event JSON messages to MQTT broker (broker.hivemq.com)
 
 **Dashboard (Python subscriber):**
 
-Subscribes to MQTT topic (SIH2025/faults)
+-Subscribes to MQTT topic (SIH2025/faults)
 
-Displays real-time fault events with node ID, reason, and timestamp
+-Displays real-time fault events with node ID, reason, and timestamp
 
-Demo Flow
+-Demo Flow
 
-Lamp/LED is ON initially
+-Lamp/LED is ON initially
 
-Simulated fault (snap/overheat/open circuit) → Relay OFF → Lamp/LED switches OFF
+-Simulated fault (snap/overheat/open circuit) → Relay OFF → Lamp/LED switches OFF
 
-Dashboard displays fault details with timestamp
+-Dashboard displays fault details with timestamp
 
-Hardware (POC Setup)
+**Hardware (POC Setup)**
 
-Raspberry Pi (any model with Wi-Fi + GPIO)
+-Raspberry Pi (any model with Wi-Fi + GPIO)
 
-Relay module for switching demo lamp/LED bulb
+-Relay module for switching demo lamp/LED bulb
 
-Lamp/LED bulb as the test load
+-Lamp/LED bulb as the test load
 
-Breadboard and jumper wires
+-Breadboard and jumper wires
 
-Future deployment will replace simulated values with actual sensor modules:
+-Future deployment will replace simulated values with actual sensor modules:
 
-ADXL345 accelerometer (vibration monitoring)
+-ADXL345 accelerometer (vibration monitoring)
 
-ACS712 current sensor (current monitoring)
+-ACS712 current sensor (current monitoring)
 
-DS18B20 digital temperature sensor (temperature monitoring)
+-DS18B20 digital temperature sensor (temperature monitoring)
 
-Waterproof casing for field deployment
+-Waterproof casing for field deployment
 
 **Testing Scenarios**
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -123,7 +123,8 @@ python3 dashboard.py
 
 Node: RPI-Node-1 | Event: Snap Detected | Reason: Vibration Spike | Time: 2025-09-29T22:15:00
 
-Impact
+**Impact**
+------------------------------------------------------------------------------------------------------------------------------------------
 
 **The proposed system reduces:**
 
