@@ -4,28 +4,28 @@
 
 Overhead low-voltage AC distribution conductors often break due to storms, aging, or accidents, leading to:
 
-Power outages
+-> Power outages
 
-Electrocution hazards from live wires on the ground
+-> Electrocution hazards from live wires on the ground
 
-Delays in maintenance because faults are reported late
+-> Delays in maintenance because faults are reported late
 
 
 💡 Proposed Solution
 
 We propose a cost-effective IoT + AI system with pole-mounted nodes that detect conductor faults using:
 
-Vibration, current, and temperature sensors
+-> Vibration, current, and temperature sensors
 
-Raspberry Pi for processing + relay control
+-> Raspberry Pi for processing + relay control
 
-MQTT-based fault reporting
+-> MQTT-based fault reporting
 
 When a fault is detected:
 
-The node isolates the load (lamp/fan) using a relay
+-> The node isolates the load (lamp/fan) using a relay
 
-Publishes a real-time fault alert to a central dashboard
+-> Publishes a real-time fault alert to a central dashboard
 
 Faults can be verified by peer nodes or crowd-sourced reports for higher reliability
 
@@ -36,38 +36,38 @@ Since final deployment hardware is unavailable, the POC uses Raspberry Pi with s
 
 Node (Python script):
 
-Simulates vibration, current, and temperature readings
+-> Simulates vibration, current, and temperature readings
 
-Detects faults based on thresholds
+-> Detects faults based on thresholds
 
-Controls relay (turns OFF lamp if fault occurs)
+-> Controls relay (turns OFF lamp if fault occurs)
 
-Publishes event JSON to MQTT broker (broker.hivemq.com)
+-> Publishes event JSON to MQTT broker (broker.hivemq.com)
 
 Dashboard (Subscriber script):
 
-Subscribes to MQTT topic (SIH2025/faults)
+-> Subscribes to MQTT topic (SIH2025/faults)
 
-Displays live fault events
+-> Displays live fault events
 
 Demo Flow:
 
-Lamp ON initially
+-> Lamp ON initially
 
-Simulated fault triggers → Lamp OFF
+-> Simulated fault triggers → Lamp OFF
 
 Dashboard shows fault reason + timestamp
 
 
 🛠 Hardware (POC Setup)
 
-Raspberry Pi (any model with Wi-Fi + GPIO)
+-> Raspberry Pi (any model with Wi-Fi + GPIO)
 
-Relay module (to control demo lamp/LED bulb)
+-> Relay module (to control demo lamp/LED bulb)
 
-Lamp/LED bulb as demo load
+-> Lamp/LED bulb as demo load
 
-Breadboard + jumper wires
+-> Breadboard + jumper wires
 
 (Real deployment will use ADXL345 accelerometer, ACS712 current sensor, DS18B20 temperature sensor, and waterproof casing.)
 
